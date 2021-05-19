@@ -41,6 +41,8 @@
   flex-direction: column;
   width: 20%;
   height: 100vh;
+  position: fixed;
+  left: 0;
 }
 .navbox{
   font: Arial, Helvetica, sans-serif;
@@ -81,4 +83,8 @@
 }
 .main{
   width: 80%
+}
+.article{
+  font-size: 50px;
+  text-align: center;
 }

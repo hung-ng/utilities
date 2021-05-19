@@ -2,8 +2,8 @@
 $salt="oklaoklaokla";
 session_start();
 require_once "pdo.php";
-if (isset($_SESSION['id'])){
-  header('Location: timeline.php');
+if (isset($_SESSION['student_id'])){
+  header('Location: timetable.php');
 };
 if (isset($_POST['email'])&&isset($_POST['password'])&&isset($_POST['confirmPassword'])&&isset($_POST['firstName'])&&isset($_POST['lastName'])){
   $stmt=$pdo->query("SELECT PW FROM Students WHERE email='{$_POST['email']}'");

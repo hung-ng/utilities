@@ -2,7 +2,8 @@
 session_start();
 require_once "pdo.php";
 if(!isset($_SESSION['student_id'])){
-  die("Not logged in");
+  $_SESSION['error']="Please Log In";
+  header('Location: login.php');
 };
 $stmt1=$pdo->query("SELECT * FROM Students WHERE student_id='{$_SESSION['student_id']}'");
 $student=$stmt1->fetch(PDO::FETCH_ASSOC);
@@ -34,12 +35,12 @@ $end_date_format=false;
 }
 
   if(strlen($_POST['event'])<1){
-    $_SESSION['fail']="Event is required";
+    $_SESSION['error']="Event is required";
     header('Location: timeline.php');
     return;
   }
   elseif($start_date_format!==true||$end_date_format!==true){
-    $_SESSION['fail']="Date must be in format YYYY-MM-DD";
+    $_SESSION['error']="Date must be in format YYYY-MM-DD";
     header('Location: timeline.php');
     return;
   }
@@ -98,38 +99,27 @@ $end_date_format=false;
     </div>
   </div>
   <div class="main">
-    <div id="timetableform">
-<?php
-if(isset($_SESSION['fail'])){
-  echo ('<p style="color: red;">'.htmlentities($_SESSION['fail'])."</p>\n");
-  unset($_SESSION['fail']);
-};
-if(isset($_SESSION['success'])){
-  echo ('<p style="color: green;">'.htmlentities($_SESSION['success'])."</p>\n");
-  unset($_SESSION['success']);
-}
-?>
-<form method="POST">
-  <label for="event">Event </label>
-  <input type="text" name="event" id="event" class="textinput"><br/>
-  <label for="startdate">StartDate </label>
-  <input type="text" name="startdate" id="startdate" class="textinput"><br/>
-  <label for="enddate">EndDate </label>
-  <input type="text" name="enddate" id="enddate" class="textinput"><br/>
-  <label for="notes">Notes </label>
-  <input type="text" name="notes" id="notes" class="textinput"><br/>
-  <input type="submit" value="Add">
-</form>
-</div>
+  <div class="article">Time Table</div>
+  <?php
+  if(isset($_SESSION['error'])){
+   echo ('<p style="color: red;">'.htmlentities($_SESSION['fail'])."</p>\n");
+   unset($_SESSION['fail']);
+  };
+  if(isset($_SESSION['success'])){
+   echo ('<p style="color: green;">'.htmlentities($_SESSION['success'])."</p>\n");
+   unset($_SESSION['success']);
+  }
+  ?>
 <div id="timetable">
 <?php
-$stmt2=$pdo->query("SELECT Event, StartDate, EndDate, Notes FROM timetable WHERE student_id= '{$_SESSION['student_id']}' ORDER BY EndDate");
+$stmt2=$pdo->query("SELECT Event, StartDate, EndDate, Notes, tb_id FROM timetable WHERE student_id= '{$_SESSION['student_id']}' ORDER BY EndDate");
 echo "<table>";
 echo "<tr>";
 echo "<th>"."Event"."</th>";
 echo"<th>"."Start Date"."</th>";
 echo"<th>"."End Date"."</th>";
 echo"<th>"."Notes"."</th>";
+echo"<th>"."Action"."</th>";
 echo"</tr>";
 while($row=$stmt2->fetch(PDO::FETCH_ASSOC)){
   echo "<tr>";
@@ -137,11 +127,12 @@ while($row=$stmt2->fetch(PDO::FETCH_ASSOC)){
   echo "<td>".htmlentities($row['StartDate'])."</td>";
   echo "<td>".htmlentities($row['EndDate'])."</td>";
   echo "<td>".htmlentities($row['Notes'])."</td>";
+  echo "<td>".'<a class="none" href="edittb.php?tb_id='.$row['tb_id']. '">Edit</a> /';
+  echo'<a class="none" href="deltb.php?tb_id='.$row['tb_id'].'">Delete</a>'."</td>";
   echo "</tr>";
 };
 echo "</table>"
  ?>
-</div>
 </div>
 </div>
 </div>

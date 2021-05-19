@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once "pdo.php";
-if (isset($_SESSION['id'])){
-  header('Location: timeline.php');
+if (isset($_SESSION['student_id'])){
+  header('Location: timetable.php');
 };
 $salt="oklaoklaokla";
 if (isset($_POST['email'])&&isset($_POST['password'])){

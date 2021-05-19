@@ -10,7 +10,7 @@ table{
 th{
   color: white;
   background-color: gray;
-  width: 25%;
+  width: 20%;
   height: 80px;
 }
 td{
@@ -19,14 +19,13 @@ td{
   width: 25%;
   height: 80px;
 }
-#timetableform{
-  margin: 20px 0px 50px 100px;
-  line-height: 40px
-}
 .textinput {
   height: 30px;
   width: 300px;
 }
 label{
   height: 30px;
+}
+#timetable{
+  margin: 30px;
 }
