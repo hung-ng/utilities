@@ -1,0 +1,84 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.input-wrapper input{
+    outline: none;
+    border: 1px solid #dbdbdb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 100%
+}
+
+.input-wrapper{
+    margin-bottom: 10px;
+}
+
+.btn{
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #4a90e6;
+    outline: none;
+    border-radius: 5px;
+}
+
+.error{
+    text-align: center;
+}
+
+.form-action span{
+    font-size: 25px;
+}
+.none{
+    text-decoration: none;
+    color: black;
+}
+.navbar{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+}
+.navbox{
+  font: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding: auto 0px;
+  background-color: #dfdfe2;;
+  color: #0a0a23;
+  height: 14vh;
+  line-height: 14vh
+
+}
+.navbox:hover{
+  background-color: #0a0a23;
+  color: #dfdfe2;;
+}
+.brandname{
+  font: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  height: 30vh;
+  line-height: 10vh
+}
+.screencomponent{
+  display: flex;
+  flex-direction: row;
+}
+.menu{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px 0px 0px;
+  height: 70vh;
+  justify-content: space-around;
+}
+.main{
+  width: 80%
+}
