@@ -35,18 +35,18 @@ $end_date_format=false;
 }
 
   if(strlen($_POST['event'])<1){
-    $_SESSION['fail']="Event is required";
+    $_SESSION['error']="Event is required";
     header('Location: addtb.php');
     return;
   }
   elseif($start_date_format!==true||$end_date_format!==true){
-    $_SESSION['fail']="Date must be in format YYYY-MM-DD";
+    $_SESSION['error']="Date must be in format YYYY-MM-DD";
     header('Location: addtb.php');
     return;
   }
   else{
     $_SESSION['success']="Record inserted";
-    $stmt3 = $pdo->prepare('INSERT INTO timetable(Event, StartDate, EndDate, Notes, student_id) VALUES ( :ev, :sd, :ed, :no, :std)');
+    $stmt3 = $pdo->prepare("INSERT INTO timetable(Event, StartDate, EndDate, Notes, student_id) VALUES ( :ev, :sd, :ed, :no, :std)");
     $stmt3->execute(array(
     ':ev' => $_POST['event'],
     ':sd' => $_POST['startdate'],
@@ -80,7 +80,8 @@ $end_date_format=false;
 
 <div class="screencomponent">
  <div class="navbar">
-   <div class="brandname"><?=htmlentities($student_name) ?>'s Utilities</div>
+   <div class="fixed">
+   <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
    <div class="menu">
    <div class="navbox">Profile</div>
    <div class="navbox">Academic Transcript</div>
@@ -89,12 +90,13 @@ $end_date_format=false;
    <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
    </div>
  </div>
+ </div>
  <div class="main">
    <div id="timetableform">
 <?php
-if(isset($_SESSION['fail'])){
- echo ('<p style="color: red;">'.htmlentities($_SESSION['fail'])."</p>\n");
- unset($_SESSION['fail']);
+if(isset($_SESSION['error'])){
+ echo ('<p style="color: red;">'.htmlentities($_SESSION['error'])."</p>\n");
+ unset($_SESSION['error']);
 };
 if(isset($_SESSION['success'])){
  echo ('<p style="color: green;">'.htmlentities($_SESSION['success'])."</p>\n");
@@ -111,6 +113,7 @@ if(isset($_SESSION['success'])){
  <label for="notes">Notes </label>
  <input type="text" name="notes" id="notes" class="textinput"><br/>
  <input type="submit" value="Add">
+ <a href="timetable.php">Cancel</a>
 </form>
 </div>
 </div>

@@ -9,55 +9,6 @@ $stmt1=$pdo->query("SELECT * FROM Students WHERE student_id='{$_SESSION['student
 $student=$stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name=$student['FN']." ".$student['LN'];
 
-if(isset($_POST['event'])&&isset($_POST['startdate'])&&isset($_POST['enddate'])&&isset($_POST['notes'])){
-  if(strpos($_POST['startdate'], '-') !== false) {
-  list($y, $m, $d) = explode('-', $_POST['startdate']);
-  if(checkdate($m, $d, $y)){
-    $start_date_format=true;
-    }
-    else{
-    $start_date_format=false;
-    }
-  } else {
-  $start_date_format=false;
-  }
-
-if(strpos($_POST['enddate'], '-') !== false) {
-list($y, $m, $d) = explode('-', $_POST['startdate']);
-if(checkdate($m, $d, $y)){
-  $end_date_format=true;
-  }
-  else{
-  $end_date_format=false;
-  }
-} else {
-$end_date_format=false;
-}
-
-  if(strlen($_POST['event'])<1){
-    $_SESSION['error']="Event is required";
-    header('Location: timeline.php');
-    return;
-  }
-  elseif($start_date_format!==true||$end_date_format!==true){
-    $_SESSION['error']="Date must be in format YYYY-MM-DD";
-    header('Location: timeline.php');
-    return;
-  }
-  else{
-    $_SESSION['success']="Record inserted";
-    $stmt3 = $pdo->prepare('INSERT INTO timetable(Event, StartDate, EndDate, Notes, student_id) VALUES ( :ev, :sd, :ed, :no, :std)');
-    $stmt3->execute(array(
-    ':ev' => $_POST['event'],
-    ':sd' => $_POST['startdate'],
-    ':ed' => $_POST['enddate'],
-    ':no' => $_POST['notes'],
-    ':std' => $_SESSION['student_id']),
-    );
-    header('Location: timeline.php');
-    return;
-  }
-};
 ?>
 
 
@@ -89,7 +40,8 @@ $end_date_format=false;
 
 <div class="screencomponent">
   <div class="navbar">
-    <div class="brandname"><?=htmlentities($student_name) ?>'s Utilities</div>
+    <div class="fixed">
+    <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox">Profile</div>
     <div class="navbox">Academic Transcript</div>
@@ -98,11 +50,13 @@ $end_date_format=false;
     <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
     </div>
   </div>
+  </div>
   <div class="main">
   <div class="article">Time Table</div>
+  <div><a href="./addtb.php"><img src="https://icons-for-free.com/iconfiles/png/512/create+new+plus+icon-1320183284524393487.png" height="30px" width="30px"/></a></div>
   <?php
   if(isset($_SESSION['error'])){
-   echo ('<p style="color: red;">'.htmlentities($_SESSION['fail'])."</p>\n");
+   echo ('<p style="color: red;">'.htmlentities($_SESSION['error'])."</p>\n");
    unset($_SESSION['fail']);
   };
   if(isset($_SESSION['success'])){

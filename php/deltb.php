@@ -69,7 +69,8 @@ if ( isset($_POST['delete']) && isset($_POST['tb_id']) ) {
 
 <div class="screencomponent">
  <div class="navbar">
-   <div class="brandname"><?=htmlentities($student_name) ?>'s Utilities</div>
+   <div class="fixed">
+   <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
    <div class="menu">
    <div class="navbox">Profile</div>
    <div class="navbox">Academic Transcript</div>
@@ -77,6 +78,7 @@ if ( isset($_POST['delete']) && isset($_POST['tb_id']) ) {
    <div class="navbox">Teachers' Contacts</div>
    <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
    </div>
+ </div>
  </div>
  <div class="main">
    <p>Confirm: Deleting <?= htmlentities($row['Event']) ?> ?</p>
