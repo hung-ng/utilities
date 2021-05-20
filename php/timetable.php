@@ -53,7 +53,7 @@ $student_name=$student['FN']." ".$student['LN'];
   </div>
   <div class="main">
   <div class="article">Time Table</div>
-  <div><a href="./addtb.php"><img src="https://icons-for-free.com/iconfiles/png/512/create+new+plus+icon-1320183284524393487.png" height="30px" width="30px"/></a></div>
+  <div id="adddiv"><div><a href="./addtb.php"><img src="https://icons-for-free.com/iconfiles/png/512/create+new+plus+icon-1320183284524393487.png" height="30px" width="30px"/></a></div></div>
   <?php
   if(isset($_SESSION['error'])){
    echo ('<p style="color: red;">'.htmlentities($_SESSION['error'])."</p>\n");
