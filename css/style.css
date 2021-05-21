@@ -34,7 +34,7 @@
 }
 .none{
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
 .navbar{
   display: flex;
@@ -42,25 +42,42 @@
   width: 20%;
   height: 100vh;
 }
-.navbox{
-  font: Arial, Helvetica, sans-serif;
+.navbox1{
+  font-family: : Arial, Helvetica, sans-serif;
   font-size: 25px;
   width: 100%;
   cursor: pointer;
   text-align: center;
   padding: auto 0px;
-  background-color: #dfdfe2;;
+  background-color: #dfdfe2;
   color: #0a0a23;
   height: 14vh;
   line-height: 14vh
 
 }
-.navbox:hover{
+.navbox1:hover{
   background-color: #0a0a23;
-  color: #dfdfe2;;
+  color: #dfdfe2;
+}
+.navbox2{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding: auto 0px;
+  background-color: #0a0a23;
+  color:  #dfdfe2;
+  height: 14vh;
+  line-height: 14vh
+
+}
+.navbox2:hover{
+  background-color:  #dfdfe2;
+  color: #0a0a23;
 }
 .brandname{
-  font: Arial, Helvetica, sans-serif;
+  font-family: : Arial, Helvetica, sans-serif;
   font-size: 30px;
   width: 100%;
   cursor: pointer;

@@ -68,18 +68,18 @@ if ( isset($_POST['delete']) && isset($_POST['tb_id']) ) {
 
 
 <div class="screencomponent">
- <div class="navbar">
-   <div class="fixed">
-   <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
-   <div class="menu">
-   <div class="navbox">Profile</div>
-   <div class="navbox">Academic Transcript</div>
-   <div class="navbox">Time Table</div>
-   <div class="navbox"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
-   <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
-   </div>
- </div>
- </div>
+  <div class="navbar">
+    <div class="fixed">
+    <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
+    <div class="menu">
+    <div class="navbox1"><a href="profile.php" class="none">Profile</a></div>
+    <div class="navbox1">Academic Transcript</div>
+    <div class="navbox2"><a href="timetable.php" class="none">Time Table</a></div>
+    <div class="navbox1"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
+    <div class="navbox1"><a href="logout.php" class="none">Log out</a></div>
+    </div>
+  </div>
+  </div>
  <div class="main">
    <p>Confirm: Deleting <?= htmlentities($row['Event']) ?> ?</p>
    <form method="post">
