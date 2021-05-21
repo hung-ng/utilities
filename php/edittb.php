@@ -40,39 +40,44 @@ $student=$stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name=$student['FN']." ".$student['LN'];
 
 if(isset($_POST['event'])&&isset($_POST['startdate'])&&isset($_POST['enddate'])&&isset($_POST['notes']) && isset($_POST['tb_id'])){
-  if(strpos($_POST['startdate'], '-') !== false) {
-  list($y, $m, $d) = explode('-', $_POST['startdate']);
-  if(checkdate($m, $d, $y)){
-    $start_date_format=true;
-    }
-    else{
-    $start_date_format=false;
-    }
-  } else {
-  $start_date_format=false;
-  }
+//   if(strpos($_POST['startdate'], '-') !== false) {
+//   list($y, $m, $d) = explode('-', $_POST['startdate']);
+//   if(checkdate($m, $d, $y)){
+//     $start_date_format=true;
+//     }
+//     else{
+//     $start_date_format=false;
+//     }
+//   } else {
+//   $start_date_format=false;
+//   }
 
-if(strpos($_POST['enddate'], '-') !== false) {
-list($y, $m, $d) = explode('-', $_POST['startdate']);
-if(checkdate($m, $d, $y)){
-  $end_date_format=true;
-  }
-  else{
-  $end_date_format=false;
-  }
-} else {
-$end_date_format=false;
-}
+// if(strpos($_POST['enddate'], '-') !== false) {
+// list($y, $m, $d) = explode('-', $_POST['startdate']);
+// if(checkdate($m, $d, $y)){
+//   $end_date_format=true;
+//   }
+//   else{
+//   $end_date_format=false;
+//   }
+// } else {
+// $end_date_format=false;
+// }
 
   if(strlen($_POST['event'])<1){
     $_SESSION['error']="Event is required";
     header('Location: edittb.php?tb_id='.$_POST['tb_id']);
     return;
   }
-  elseif($start_date_format!==true||$end_date_format!==true){
-    $_SESSION['error']="Date must be in format YYYY-MM-DD";
-    header('Location: edittb.php?tb_id='.$_POST['tb_id']);
-    return;
+  // elseif($start_date_format!==true||$end_date_format!==true){
+  //   $_SESSION['error']="Date must be in format YYYY-MM-DD";
+  //   header('Location: edittb.php?tb_id='.$_POST['tb_id']);
+  //   return;
+  // }
+  elseif($_POST['enddate']<$_POST['startdate']){
+    $_SESSION['error']="EndDate must be after StartDate";
+      header('Location: addtb.php');
+      return;
   }
   else{
     $_SESSION['success']="Record inserted";
@@ -122,7 +127,7 @@ $no = htmlentities($row['Notes'])
    <div class="navbox">Profile</div>
    <div class="navbox">Academic Transcript</div>
    <div class="navbox">Time Table</div>
-   <div class="navbox">Teachers' Contacts</div>
+   <div class="navbox"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
    <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
    </div>
  </div>
@@ -142,13 +147,13 @@ if(isset($_SESSION['success'])){
 ?>
    <form method="POST">
     <label for="event">Event </label>
-    <input type="text" name="event" id="event" class="textinput" value="<?= $ev ?>"><br/>
+    <input type="text" name="event" id="event" maxlength="128" value="<?= $ev ?>" class="textinput"><br/>
     <label for="startdate">StartDate </label>
-    <input type="text" name="startdate" id="startdate" class="textinput" value="<?= $sd ?>"><br/>
+    <input type="date" name="startdate" id="startdate" value="2021-10-10" value="<?= $sd ?>" class="textinput"><br/>
     <label for="enddate">EndDate </label>
-    <input type="text" name="enddate" id="enddate" class="textinput" value="<?= $ed ?>"><br/>
+    <input type="date" name="enddate" id="enddate" value="2021-10-10" value="<?= $ed ?>" class="textinput"><br/>
     <label for="notes">Notes </label>
-    <input type="text" name="notes" id="notes" class="textinput" value="<?= $no ?>"><br/>
+    <input type="text" name="notes" id="notes" class="textinput" maxlength="256" value="<?= $no ?>" class="textinput"><br/>
     <input type="hidden" name="tb_id" value="<?= $row['tb_id'] ?>">
     <input type="submit" value="Edit">
     <a href="timetable.php">Cancel</a>

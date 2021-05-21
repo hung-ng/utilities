@@ -80,7 +80,8 @@
   justify-content: space-around;
 }
 .main{
-  width: 80%
+  width: 80%;
+  padding: 30px;
 }
 .article{
   font-size: 50px;

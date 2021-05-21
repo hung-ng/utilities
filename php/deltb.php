@@ -75,7 +75,7 @@ if ( isset($_POST['delete']) && isset($_POST['tb_id']) ) {
    <div class="navbox">Profile</div>
    <div class="navbox">Academic Transcript</div>
    <div class="navbox">Time Table</div>
-   <div class="navbox">Teachers' Contacts</div>
+   <div class="navbox"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
    <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
    </div>
  </div>

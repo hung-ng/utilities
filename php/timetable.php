@@ -46,7 +46,7 @@ $student_name=$student['FN']." ".$student['LN'];
     <div class="navbox">Profile</div>
     <div class="navbox">Academic Transcript</div>
     <div class="navbox">Time Table</div>
-    <div class="navbox">Teachers' Contacts</div>
+    <div class="navbox"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
     <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
     </div>
   </div>
@@ -54,17 +54,17 @@ $student_name=$student['FN']." ".$student['LN'];
   <div class="main">
   <div class="article">Time Table</div>
   <div id="adddiv"><div><a href="./addtb.php"><img src="../img/Plus-Icon.png" height="30px" width="30px"/></a></div></div>
+<div id="timetable">
   <?php
   if(isset($_SESSION['error'])){
    echo ('<p style="color: red;">'.htmlentities($_SESSION['error'])."</p>\n");
-   unset($_SESSION['fail']);
+   unset($_SESSION['error']);
   };
   if(isset($_SESSION['success'])){
    echo ('<p style="color: green;">'.htmlentities($_SESSION['success'])."</p>\n");
    unset($_SESSION['success']);
   }
   ?>
-<div id="timetable">
 <?php
 $stmt2=$pdo->query("SELECT Event, StartDate, EndDate, Notes, tb_id FROM timetable WHERE student_id= '{$_SESSION['student_id']}' ORDER BY EndDate");
 echo "<table>";

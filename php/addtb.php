@@ -10,39 +10,43 @@ $student_name=$student['FN']." ".$student['LN'];
 
 
 if(isset($_POST['event'])&&isset($_POST['startdate'])&&isset($_POST['enddate'])&&isset($_POST['notes'])){
-  if(strpos($_POST['startdate'], '-') !== false) {
-  list($y, $m, $d) = explode('-', $_POST['startdate']);
-  if(checkdate($m, $d, $y)){
-    $start_date_format=true;
-    }
-    else{
-    $start_date_format=false;
-    }
-  } else {
-  $start_date_format=false;
-  }
-
-if(strpos($_POST['enddate'], '-') !== false) {
-list($y, $m, $d) = explode('-', $_POST['startdate']);
-if(checkdate($m, $d, $y)){
-  $end_date_format=true;
-  }
-  else{
-  $end_date_format=false;
-  }
-} else {
-$end_date_format=false;
-}
+//   if(strpos($_POST['startdate'], '-') !== false) {
+//   list($y, $m, $d) = explode('-', $_POST['startdate']);
+//   if(checkdate($m, $d, $y)){
+//     $start_date_format=true;
+//     }
+//     else{
+//     $start_date_format=false;
+//     }
+//   } else {
+//   $start_date_format=false;
+//   }
+//
+// if(strpos($_POST['enddate'], '-') !== false) {
+// list($y, $m, $d) = explode('-', $_POST['startdate']);
+// if(checkdate($m, $d, $y)){
+//   $end_date_format=true;
+//   }
+//   else{
+//   $end_date_format=false;
+//   }
+// } else {
+// $end_date_format=false;
+// }
 
   if(strlen($_POST['event'])<1){
     $_SESSION['error']="Event is required";
     header('Location: addtb.php');
     return;
   }
-  elseif($start_date_format!==true||$end_date_format!==true){
-    $_SESSION['error']="Date must be in format YYYY-MM-DD";
-    header('Location: addtb.php');
-    return;
+  // elseif($start_date_format!==true||$end_date_format!==true){
+  //   $_SESSION['error']="Date must be in format YYYY-MM-DD";
+  //   header('Location: addtb.php');
+  //   return;
+  elseif($_POST['enddate']<$_POST['startdate']){
+    $_SESSION['error']="EndDate must be after StartDate";
+      header('Location: addtb.php');
+      return;
   }
   else{
     $_SESSION['success']="Record inserted";
@@ -86,7 +90,7 @@ $end_date_format=false;
    <div class="navbox">Profile</div>
    <div class="navbox">Academic Transcript</div>
    <div class="navbox">Time Table</div>
-   <div class="navbox">Teachers' Contacts</div>
+   <div class="navbox"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
    <div class="navbox"><a href="logout.php" class="none">Log out</a></div>
    </div>
  </div>
@@ -105,13 +109,13 @@ if(isset($_SESSION['success'])){
 ?>
 <form method="POST">
  <label for="event">Event </label>
- <input type="text" name="event" id="event" class="textinput"><br/>
+ <input type="text" name="event" id="event" maxlength="128" class="textinput"><br/>
  <label for="startdate">StartDate </label>
- <input type="text" name="startdate" id="startdate" class="textinput"><br/>
+ <input type="date" name="startdate" id="startdate" value="2021-10-10" class="textinput"><br/>
  <label for="enddate">EndDate </label>
- <input type="text" name="enddate" id="enddate" class="textinput"><br/>
+ <input type="date" name="enddate" id="enddate" value="2021-10-10" class="textinput"><br/>
  <label for="notes">Notes </label>
- <input type="text" name="notes" id="notes" class="textinput"><br/>
+ <input type="text" name="notes" id="notes" maxlength="256" class="textinput"><br/>
  <input type="submit" value="Add">
  <a href="timetable.php">Cancel</a>
 </form>
