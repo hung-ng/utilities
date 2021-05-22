@@ -8,7 +8,6 @@ if(!isset($_SESSION['student_id'])){
 $stmt1=$pdo->query("SELECT * FROM Students WHERE student_id='{$_SESSION['student_id']}'");
 $student=$stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name=$student['FN']." ".$student['LN'];
-
 ?>
 
 
@@ -41,7 +40,7 @@ $student_name=$student['FN']." ".$student['LN'];
 <div class="screencomponent">
   <div class="navbar">
     <div class="fixed">
-    <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
+    <div class="brandname"><?=htmlspecialchars($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox1"><a href="profile.php" class="none">Profile</a></div>
     <div class="navbox1">Academic Transcript</div>
@@ -77,10 +76,10 @@ echo"<th>"."Action"."</th>";
 echo"</tr>";
 while($row=$stmt2->fetch(PDO::FETCH_ASSOC)){
   echo "<tr>";
-  echo "<td>".htmlentities($row['Event'])."</td>";
-  echo "<td>".htmlentities($row['StartDate'])."</td>";
-  echo "<td>".htmlentities($row['EndDate'])."</td>";
-  echo "<td>".htmlentities($row['Notes'])."</td>";
+  echo "<td>".htmlspecialchars($row['Event'])."</td>";
+  echo "<td>".htmlspecialchars($row['StartDate'])."</td>";
+  echo "<td>".htmlspecialchars($row['EndDate'])."</td>";
+  echo "<td>".htmlspecialchars($row['Notes'])."</td>";
   echo "<td>".'<a class="none" href="edittb.php?tb_id='.$row['tb_id']. '">Edit</a> /';
   echo'<a class="none" href="deltb.php?tb_id='.$row['tb_id'].'">Delete</a>'."</td>";
   echo "</tr>";

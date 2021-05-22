@@ -79,7 +79,7 @@ if(isset($_POST['class'])&&isset($_POST['school'])&&isset($_POST['gender'])&&iss
 <div class="screencomponent">
   <div class="navbar">
     <div class="fixed">
-    <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
+    <div class="brandname"><?=htmlspecialchars($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox2"><a href="profile.php" class="none">Profile</a></div>
     <div class="navbox1">Academic Transcript</div>
@@ -91,7 +91,6 @@ if(isset($_POST['class'])&&isset($_POST['school'])&&isset($_POST['gender'])&&iss
   </div>
   <div class="main">
   <div class="article">Profile</div>
-  <div id="adddiv"><div>Edit Profile</div></div>
   <?php
   if(isset($_SESSION['error'])){
    echo ('<p style="color: red;">'.htmlentities($_SESSION['error'])."</p>\n");
@@ -111,8 +110,8 @@ if(isset($_POST['class'])&&isset($_POST['school'])&&isset($_POST['gender'])&&iss
     echo '<input type="text" name="school" id="school" maxlength="256" class="textinput"><br/>';
     echo '<label for="gender">Gender </label>';
     echo '<select id="gender" name="gender" form="profile" class="textinput">';
-    echo '<option value="male">Male</option>';
-    echo '<option value="female">Female</option>';
+    echo '<option value="Male">Male</option>';
+    echo '<option value="Female">Female</option>';
     echo '</select>';
     echo '<br>';
     echo '<label for="dob">DoB </label>';
@@ -123,7 +122,22 @@ if(isset($_POST['class'])&&isset($_POST['school'])&&isset($_POST['gender'])&&iss
     echo '</form>';
   }
   else{
-
+    echo '<div id="adddiv"><div>'.'<a class="none" href="editprofile.php?std_id='.$student['student_id'].'">Edit Profile</a></div></div>';
+    echo '<div class="profile-body">';
+    echo '<div class="profile-content">';
+    echo '<div>Name: '.$student_name.'</div>';
+    echo '<div>Class: '.htmlspecialchars($student["Class"]).'</div>';
+    echo '</div>';
+    echo '<br>';
+    echo '<div>School: '.htmlspecialchars($student["School"]).'</div>';
+    echo '<br>';
+    echo '<div class="profile-content">';
+    echo '<div>Gender: '.htmlspecialchars($student["Gender"]).'</div>';
+    echo '<div>D.o.B: '.htmlspecialchars($student["DoB"]).'</div>';
+    echo '</div>';
+    echo '<br>';
+    echo '<div>Phone Number: '.htmlspecialchars($student["PhoneNum"]).'</div>';
+    echo '</div>';
   }
 
 

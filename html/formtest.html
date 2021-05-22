@@ -1,17 +1,38 @@
-<form method="POST" id="profile">
-  <label for="class">Class </label>
-  <input type="text" name="class" id="class" maxlength="128"><br/>
-  <label for="school">School </label>
-  <input type="text" name="school" id="school" maxlength="256"><br/>
-  <label for="gender">Gender </label>
-  <select id="gender" name="gender" form="profile">
-  <option value="male">Male</option>
-  <option value="female">Female</option>
-  </select>
-  <br>
-  <label for="dob">DoB </label>
-  <input type="date" name="dob" id="dob" value="2004-01-31" min="1922-01-01" max="2015-01-01"><br/>
-  <label for="phonenum">Phone Number </label>
-  <input type="text" name="phonenum" id="phonenum" maxlength="10"><br/>
-  <input type="submit" value="Add">
- </form>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/profile.css"
+  </head>
+  <body>
+    <form method="POST" id="profile">
+      <label for="class">Class </label>
+      <input type="text" name="class" id="class" maxlength="128"><br/>
+      <label for="school">School </label>
+      <input type="text" name="school" id="school" maxlength="256"><br/>
+      <label for="gender">Gender </label>
+      <select id="gender" name="gender" form="profile">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      </select>
+      <br>
+      <label for="dob">DoB </label>
+      <input type="date" name="dob" id="dob" value="2004-01-31" min="1922-01-01" max="2015-01-01"><br/>
+      <label for="phonenum">Phone Number </label>
+      <input type="text" name="phonenum" id="phonenum" maxlength="10"><br/>
+      <input type="submit" value="Add">
+     </form>
+    <div class="profile-content">
+    <div>Name: <?= $student_name ?></div>
+    <div>Class: <?= htmlentities($student['Class']) ?></div>
+    </div>
+    <div>School: <?= htmlentities($student['School']) ?></div>
+    <div class="profile-content">
+    <div>Gender: <?= htmlentities($student['Gender']) ?></div>
+    <div>D.o.B: <?= htmlentities($student['DoB']) ?></div>
+    </div>
+    <div>Phone Number: <?= htmlentities($student['PhoneNum']) ?></div>
+
+  </body>
+</html>

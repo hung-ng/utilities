@@ -8,7 +8,6 @@ $stmt1=$pdo->query("SELECT * FROM Students WHERE student_id='{$_SESSION['student
 $student=$stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name=$student['FN']." ".$student['LN'];
 
-
 if(isset($_POST['event'])&&isset($_POST['startdate'])&&isset($_POST['enddate'])&&isset($_POST['notes'])){
 //   if(strpos($_POST['startdate'], '-') !== false) {
 //   list($y, $m, $d) = explode('-', $_POST['startdate']);
@@ -85,7 +84,7 @@ if(isset($_POST['event'])&&isset($_POST['startdate'])&&isset($_POST['enddate'])&
 <div class="screencomponent">
   <div class="navbar">
     <div class="fixed">
-    <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
+    <div class="brandname"><?=htmlspecialchars($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox1"><a href="profile.php" class="none">Profile</a></div>
     <div class="navbox1">Academic Transcript</div>

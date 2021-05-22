@@ -76,7 +76,7 @@ if(isset($_POST['event'])&&isset($_POST['startdate'])&&isset($_POST['enddate'])&
   // }
   elseif($_POST['enddate']<$_POST['startdate']){
     $_SESSION['error']="EndDate must be after StartDate";
-      header('Location: addtb.php');
+      header('Location: edittb.php');
       return;
   }
   else{
@@ -94,10 +94,10 @@ if(isset($_POST['event'])&&isset($_POST['startdate'])&&isset($_POST['enddate'])&
   }
 };
 
-$ev = htmlentities($row['Event']);
-$sd = htmlentities($row['StartDate']);
-$ed = htmlentities($row['EndDate']);
-$no = htmlentities($row['Notes'])
+$ev = htmlspecialchars($row['Event']);
+$sd = htmlspecialchars($row['StartDate']);
+$ed = htmlspecialchars($row['EndDate']);
+$no = htmlspecialchars($row['Notes'])
 
 
 
@@ -122,7 +122,7 @@ $no = htmlentities($row['Notes'])
 <div class="screencomponent">
   <div class="navbar">
     <div class="fixed">
-    <div class="brandname"><?=htmlentities($student_name) ?>'s<br> Utilities</div>
+    <div class="brandname"><?=htmlspecialchars($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox1"><a href="profile.php" class="none">Profile</a></div>
     <div class="navbox1">Academic Transcript</div>
@@ -134,7 +134,7 @@ $no = htmlentities($row['Notes'])
   </div>
  <div class="main">
    <div id="timetableform">
-     <p>Editing <?= htmlentities($row['Event']) ?> </p>
+     <p>Editing <?= htmlspecialchars($row['Event']) ?> </p>
 <?php
 if(isset($_SESSION['error'])){
  echo ('<p style="color: red;">'.htmlentities($_SESSION['error'])."</p>\n");
