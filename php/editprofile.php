@@ -110,8 +110,8 @@ if(isset($_SESSION['success'])){
   <input type="text" name="school" id="school" maxlength="256" value="<?= $sc ?>" class="textinput"><br/>
   <label for="gender">Gender </label>
   <select id="gender" name="gender" form="profile" value="<?= $gd ?>" class="textinput">
-  <option value="male">Male</option>
-  <option value="female">Female</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
   </select>
   <br>
   <label for="dob">DoB </label>
