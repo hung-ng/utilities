@@ -43,15 +43,36 @@ $student_name=$student['FN']." ".$student['LN'];
     <div class="brandname"><?=htmlspecialchars($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox1"><a href="profile.php" class="none">Profile</a></div>
-    <div class="navbox1"><a href="academictranscript.php" class="none">Academic Transcript</a></div>
+    <div class="navbox2"><a href="academictranscript.php" class="none">Academic Transcript</a></div>
     <div class="navbox1"><a href="timetable.php" class="none">Time Table</a></div>
-    <div class="navbox2"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
+    <div class="navbox1"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
     <div class="navbox1"><a href="logout.php" class="none">Log out</a></div>
     </div>
   </div>
   </div>
   <div class="main">
-
+  <div class="article">Academic Transcript</div>
+<?php
+echo "<table>";
+echo "<tr>";
+echo "<th>"."Subject"."</th>";
+echo "<th>"."Score"."</th>";
+echo "</tr>";
+echo "<tr>";
+echo "<td>"."Mathematics"."</td>";
+echo "<td>".htmlspecialchars($student['math_score'])."</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<td>"."Mathematics"."</td>";
+echo "<td>".htmlspecialchars($student['science_score'])."</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<td>"."Mathematics"."</td>";
+echo "<td>".htmlspecialchars($student['lit_score'])."</td>";
+echo "</tr>";
+echo "</table>"
+ ?>
+</div>
 </div>
 </div>
 </body>

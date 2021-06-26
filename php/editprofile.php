@@ -25,7 +25,7 @@ if ( $_SESSION['student_id'] !== $_GET['std_id'] ) {
 if(isset($_POST['class'])&&isset($_POST['school'])&&isset($_POST['gender'])&&isset($_POST['dob'])&&isset($_POST['phonenum'])){
   if(strlen($_POST['class'])<1||strlen($_POST['school'])<1||strlen($_POST['phonenum'])<1){
     $_SESSION['error']="All field must be filled!";
-    header('Location: editprofile.php');
+    header('Location: editprofile.php?std_id='.$_SESSION['student_id']);
     return;
   }
   elseif(is_numeric($_POST['phonenum'])!==true){
@@ -83,7 +83,7 @@ $pn = htmlspecialchars($student['PhoneNum'])
     <div class="brandname"><?=htmlspecialchars($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox2"><a href="profile.php" class="none">Profile</a></div>
-    <div class="navbox1">Academic Transcript</div>
+    <div class="navbox1"><a href="academictranscript.php" class="none">Academic Transcript</a></div>
     <div class="navbox1"><a href="timetable.php" class="none">Time Table</a></div>
     <div class="navbox1"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
     <div class="navbox1"><a href="logout.php" class="none">Log out</a></div>

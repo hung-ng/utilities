@@ -43,7 +43,7 @@ $student_name=$student['FN']." ".$student['LN'];
     <div class="brandname"><?=htmlspecialchars($student_name) ?>'s<br> Utilities</div>
     <div class="menu">
     <div class="navbox1"><a href="profile.php" class="none">Profile</a></div>
-    <div class="navbox1">Academic Transcript</div>
+    <div class="navbox1"><a href="academictranscript.php" class="none">Academic Transcript</a></div>
     <div class="navbox2"><a href="timetable.php" class="none">Time Table</a></div>
     <div class="navbox1"><a href="teachercontact.php" class="none">Teachers' Contacts</a></div>
     <div class="navbox1"><a href="logout.php" class="none">Log out</a></div>
