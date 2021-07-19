@@ -12,7 +12,7 @@
     width: 30%;
 }
 
-.register-container .aside-right .header{
+.register-container .aside-right .header h3 {
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
     color: #615f5f;
@@ -22,7 +22,7 @@
 
 .register-container .input-name-wrapper{
     display: flex;
-    justify-content: space-between;   
+    justify-content: space-between;
 }
 
 .register-container .input-name-wrapper .input-wrapper{
