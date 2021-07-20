@@ -1,4 +1,5 @@
 <?php
+$salt="oklaoklaokla";
 session_start();
 require_once "pdo.php";
 if (isset($_SESSION['student_id'])) {
@@ -17,7 +18,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $stmt = $pdo->query("SELECT * FROM Students WHERE email='{$_POST['email']}'");
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $testing_pass = $row['PW'];
-    if ($testing_pass !== $_POST['password']) {
+    if ($testing_pass !== hash('md5',$_POST['password'].$salt)) {
       $_SESSION['error'] = "Username or Password is incorrect";
       header("Location: login.php");
       return;
@@ -52,6 +53,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (isset($_SESSION['error'])) {
           echo ('<p style="color: red;">' . htmlentities($_SESSION['error']) . "</p>\n");
           unset($_SESSION['error']);
+        }
+        if (isset($_SESSION['success'])) {
+          echo ('<p style="color: green;>' . htmlentities($_SESSION['success']) . "</p>\n");
+          unset($_SESSION['success']);
         }
         ?>
       </div>

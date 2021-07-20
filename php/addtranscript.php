@@ -50,7 +50,7 @@ if (isset($_POST['std_id']) && isset($_POST['science_score']) && isset($_POST['m
   <div class="screencomponent">
     <div class="navbar">
       <div class="fixed">
-        <div class="brandname">Teacher's<br> Utilities</div>
+        <div class="brandname">Teacher's<br> Box</div>
         <div class="menu">
           <div class="navbox1"><a href="logout.php" class="none">Log out</a></div>
         </div>

@@ -25,7 +25,7 @@ $student_name = $student['FN'] . " " . $student['LN'];
   <div class="screencomponent">
     <div class="navbar">
       <div class="fixed">
-        <div class="brandname"><?= htmlspecialchars($student_name) ?>'s<br> Utilities</div>
+        <div class="brandname"><?= htmlspecialchars($student_name) ?>'s<br> Box</div>
         <div class="menu">
           <div class="navbox1"><a href="profile.php" class="none">Profile</a></div>
           <div class="navbox1"><a href="academictranscript.php" class="none">Academic Transcript</a></div>

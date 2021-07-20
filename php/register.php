@@ -32,9 +32,10 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm
                 ':em' => $_POST['email'],
                 ':fn' => $_POST['firstName'],
                 ':ln' => $_POST['lastName'],
-                ':pw' => $_POST['password'],
+                ':pw' => hash('md5',$_POST['password'].$salt),
             )
         );
+        $_SESSION['success'] = "Your password has been hashed";
         header("Location: login.php");
         return;
     }
