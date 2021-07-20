@@ -8,6 +8,21 @@ if (!isset($_SESSION['student_id'])) {
 $stmt1 = $pdo->query("SELECT * FROM Students WHERE student_id='{$_SESSION['student_id']}'");
 $student = $stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name = $student['FN'] . " " . $student['LN'];
+if (htmlspecialchars($student['math_score']) == null){
+  $math = "Score has not been updated";
+} else{
+  $math = htmlspecialchars($student['math_score']);
+}
+if (htmlspecialchars($student['science_score']) == null){
+  $science = "Score has not been updated";
+} else{
+  $science = htmlspecialchars($student['science_score']);
+}
+if (htmlspecialchars($student['lit_score']) == null){
+  $lit = "Score has not been updated";
+} else{
+  $lit = htmlspecialchars($student['lit_score']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +53,7 @@ $student_name = $student['FN'] . " " . $student['LN'];
     <div class="main">
       <div class="article">Academic Transcript</div>
       <?php
+      echo "<br>";
       echo "<table>";
       echo "<tr>";
       echo "<th>" . "Subject" . "</th>";
@@ -45,15 +61,15 @@ $student_name = $student['FN'] . " " . $student['LN'];
       echo "</tr>";
       echo "<tr>";
       echo "<td>" . "Mathematics" . "</td>";
-      echo "<td>" . htmlspecialchars($student['math_score']) . "</td>";
+      echo "<td>" . $math . "</td>";
       echo "</tr>";
       echo "<tr>";
-      echo "<td>" . "Mathematics" . "</td>";
-      echo "<td>" . htmlspecialchars($student['science_score']) . "</td>";
+      echo "<td>" . "Science" . "</td>";
+      echo "<td>" . $science . "</td>";
       echo "</tr>";
       echo "<tr>";
-      echo "<td>" . "Mathematics" . "</td>";
-      echo "<td>" . htmlspecialchars($student['lit_score']) . "</td>";
+      echo "<td>" . "Literature" . "</td>";
+      echo "<td>" . $lit . "</td>";
       echo "</tr>";
       echo "</table>"
       ?>

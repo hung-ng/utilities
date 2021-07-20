@@ -13,7 +13,7 @@ if (isset($_POST['event']) && isset($_POST['startdate']) && isset($_POST['enddat
     header('Location: addtb.php');
     return;
   } elseif ($_POST['enddate'] < $_POST['startdate']) {
-    $_SESSION['error'] = "EndDate must be after StartDate";
+    $_SESSION['error'] = "End Date must be after Start Date";
     header('Location: addtb.php');
     return;
   } else {
@@ -74,9 +74,9 @@ if (isset($_POST['event']) && isset($_POST['startdate']) && isset($_POST['enddat
         <form method="POST">
           <label for="event">Event </label>
           <input type="text" name="event" id="event" maxlength="128" class="textinput"><br />
-          <label for="startdate">StartDate </label>
+          <label for="startdate">Start Date </label>
           <input type="date" name="startdate" id="startdate" value="2021-10-10" class="textinput"><br />
-          <label for="enddate">EndDate </label>
+          <label for="enddate">End Date </label>
           <input type="date" name="enddate" id="enddate" value="2021-10-10" class="textinput"><br />
           <label for="notes">Notes </label>
           <input type="text" name="notes" id="notes" maxlength="256" class="textinput"><br />

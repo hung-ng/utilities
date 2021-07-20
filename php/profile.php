@@ -68,17 +68,20 @@ if (isset($_POST['class']) && isset($_POST['school']) && isset($_POST['gender'])
     <div class="main">
       <div class="article">Profile</div>
       <?php
-      if (isset($_SESSION['error'])) {
-        echo ('<p style="color: red;">' . htmlentities($_SESSION['error']) . "</p>\n");
-        unset($_SESSION['error']);
-      };
-      if (isset($_SESSION['success'])) {
-        echo ('<p style="color: green;">' . htmlentities($_SESSION['success']) . "</p>\n");
-        unset($_SESSION['success']);
-      }
-      ?>
-      <?php
       if (!isset($student['Class'])) {
+        echo '<div class="main">';
+        echo '<div>Welcome to Student Box</div>';
+        echo '<br>';
+        echo '<div>Please provide your information in the form below</div>';
+        echo '<br>';
+        if (isset($_SESSION['error'])) {
+          echo ('<p style="color: red;">' . htmlentities($_SESSION['error']) . "</p>\n");
+          unset($_SESSION['error']);
+        };
+        if (isset($_SESSION['success'])) {
+          echo ('<p style="color: green;">' . htmlentities($_SESSION['success']) . "</p>\n");
+          unset($_SESSION['success']);
+        }
         echo '<form method="POST" id="profile">';
         echo '<label for="class">Class </label>';
         echo '<input type="text" name="class" id="class" maxlength="128" class="textinput"><br/>';
@@ -96,6 +99,7 @@ if (isset($_POST['class']) && isset($_POST['school']) && isset($_POST['gender'])
         echo '<input type="text" name="phonenum" id="phonenum" maxlength="10" class="textinput"><br/>';
         echo '<input type="submit" value="Add">';
         echo '</form>';
+        echo '</div>';
       } else {
         echo '<div id="adddiv"><div>' . '<a class="none" href="editprofile.php?std_id=' . $student['student_id'] . '">Edit Profile</a></div></div>';
         echo '<div class="profile-body">';

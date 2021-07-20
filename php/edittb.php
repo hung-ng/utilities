@@ -37,7 +37,7 @@ if (isset($_POST['event']) && isset($_POST['startdate']) && isset($_POST['enddat
     header('Location: edittb.php?tb_id=' . $_POST['tb_id']);
     return;
   } elseif ($_POST['enddate'] < $_POST['startdate']) {
-    $_SESSION['error'] = "EndDate must be after StartDate";
+    $_SESSION['error'] = "End Date must be after Start Date";
     header('Location: edittb.php?tb_id=' . $_POST['tb_id']);
     return;
   } else {
@@ -104,9 +104,9 @@ $no = htmlspecialchars($row['Notes'])
         <form method="POST">
           <label for="event">Event </label>
           <input type="text" name="event" id="event" maxlength="128" value="<?= $ev ?>" class="textinput"><br />
-          <label for="startdate">StartDate </label>
+          <label for="startdate">Start Date </label>
           <input type="date" name="startdate" id="startdate" value="2021-10-10" value="<?= $sd ?>" class="textinput"><br />
-          <label for="enddate">EndDate </label>
+          <label for="enddate">End Date </label>
           <input type="date" name="enddate" id="enddate" value="2021-10-10" value="<?= $ed ?>" class="textinput"><br />
           <label for="notes">Notes </label>
           <input type="text" name="notes" id="notes" class="textinput" maxlength="256" value="<?= $no ?>" class="textinput"><br />

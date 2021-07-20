@@ -43,7 +43,7 @@
   height: 100vh;
 }
 .navbox1{
-  font-family: : Arial, Helvetica, sans-serif;
+  font-family:  Arial, Helvetica, sans-serif;
   font-size: 25px;
   width: 100%;
   cursor: pointer;
@@ -77,13 +77,14 @@
   color: #0a0a23;
 }
 .brandname{
-  font-family: : Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   width: 100%;
   cursor: pointer;
   text-align: center;
   height: 30vh;
-  line-height: 10vh
+  line-height: 10vh;
+  margin-top: 30px;
 }
 .screencomponent{
   display: flex;
