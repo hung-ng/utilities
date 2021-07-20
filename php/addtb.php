@@ -2,7 +2,8 @@
 session_start();
 require_once "pdo.php";
 if (!isset($_SESSION['student_id'])) {
-  die("Not logged in");
+  $_SESSION['error'] = "Please Log In";
+  header('Location: index.php');
 };
 $stmt1 = $pdo->query("SELECT * FROM Students WHERE student_id='{$_SESSION['student_id']}'");
 $student = $stmt1->fetch(PDO::FETCH_ASSOC);
