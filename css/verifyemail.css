@@ -1,0 +1,34 @@
+.verifyemail-container{
+    background-image: url(../img/learning-tool.png);
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.verifyemail-container .aside-right{
+    height: 100vh;
+    background-color: #ffffff;
+    width: 30%;
+}
+
+.verifyemail-container .aside-right .header h3 {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #615f5f;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.verifyemail-container .input-name-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.verifyemail-container .input-name-wrapper .input-wrapper{
+    width: 48%;
+}
+
+#otp-form{
+    padding: 20px;
+}

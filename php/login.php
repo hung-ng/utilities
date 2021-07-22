@@ -1,10 +1,17 @@
 <?php
-$salt="oklaoklaokla";
+$salt = "oklaoklaokla";
 session_start();
 require_once "pdo.php";
 if (isset($_SESSION['student_id'])) {
   header('Location: timetable.php');
 };
+if (isset($_SESSION["otp"])) {
+  if (time() - $_SESSION["otp_stamp"] > 600) {
+    session_unset();
+    session_destroy();
+    header("Location:login.php");
+  }
+}
 $salt = "oklaoklaokla";
 if (isset($_POST['email']) && isset($_POST['password'])) {
   if ($_POST['email'] == "teacheremail@gmail.com" && $_POST['password'] == "powerfulaccount") {
@@ -15,10 +22,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     header("Location: login.php");
     return;
   } else {
-    $stmt = $pdo->query("SELECT * FROM Students WHERE email='{$_POST['email']}'");
+    $stmt = $pdo->query("SELECT * FROM users WHERE email='{$_POST['email']}'");
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $testing_pass = $row['PW'];
-    if ($testing_pass !== hash('md5',$_POST['password'].$salt)) {
+    if ($testing_pass !== hash('md5', $_POST['password'] . $salt)) {
       $_SESSION['error'] = "Username or Password is incorrect";
       header("Location: login.php");
       return;
@@ -38,7 +45,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hungng Utilities</title>
+  <title>Student Box</title>
   <?php require_once "css.php" ?>
 </head>
 

@@ -11,7 +11,7 @@ if (isset($_POST['std_id']) && isset($_POST['science_score']) && isset($_POST['m
     header('Location: addtranscript.php');
     return;
   } else {
-    $stmt = $pdo->query("SELECT * FROM Students WHERE student_id='{$_POST['std_id']}'");
+    $stmt = $pdo->query("SELECT * FROM users WHERE student_id='{$_POST['std_id']}'");
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $test = $row["email"];
     if (!isset($test)) {
@@ -20,7 +20,7 @@ if (isset($_POST['std_id']) && isset($_POST['science_score']) && isset($_POST['m
       return;
     } else {
       $_SESSION['success'] = "Record inserted";
-      $stmt3 = $pdo->prepare("UPDATE students SET math_score = :ma, science_score = :sc, lit_score = :lit WHERE student_id='{$_POST['std_id']}'");
+      $stmt3 = $pdo->prepare("UPDATE users SET math_score = :ma, science_score = :sc, lit_score = :lit WHERE student_id='{$_POST['std_id']}'");
       $stmt3->execute(
         array(
           ':ma' => $_POST['math_score'],
@@ -42,7 +42,7 @@ if (isset($_POST['std_id']) && isset($_POST['science_score']) && isset($_POST['m
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hungng Utilities</title>
+  <title>Student Box</title>
   <?php require_once "css.php" ?>
 </head>
 

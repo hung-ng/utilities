@@ -10,7 +10,7 @@ if (!isset($_GET['std_id'])) {
   header('Location: profile.php');
   return;
 };
-$stmt1 = $pdo->query("SELECT * FROM Students WHERE student_id='{$_SESSION['student_id']}'");
+$stmt1 = $pdo->query("SELECT * FROM users WHERE student_id='{$_SESSION['student_id']}'");
 $student = $stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name = $student['FN'] . " " . $student['LN'];
 if ($_SESSION['student_id'] !== $_GET['std_id']) {
@@ -32,7 +32,7 @@ if (isset($_POST['class']) && isset($_POST['school']) && isset($_POST['gender'])
     return;
   } else {
     $_SESSION['success'] = "Updated!";
-    $stmt3 = $pdo->prepare("UPDATE students SET Class = :cl, School = :sc, Gender = :gd, PhoneNum = :pn, DoB = :dob WHERE student_id='{$_SESSION['student_id']}'");
+    $stmt3 = $pdo->prepare("UPDATE users SET Class = :cl, School = :sc, Gender = :gd, PhoneNum = :pn, DoB = :dob WHERE student_id='{$_SESSION['student_id']}'");
     $stmt3->execute(
       array(
         ':cl' => $_POST['class'],
@@ -60,7 +60,7 @@ $pn = htmlspecialchars($student['PhoneNum'])
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hungng Utilities</title>
+  <title>Student Box</title>
   <?php require_once "css.php" ?>
 </head>
 
