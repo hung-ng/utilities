@@ -3,13 +3,19 @@ session_start();
 require_once "pdo.php";
 if (!isset($_SESSION['student_id'])) {
   $_SESSION['error'] = "Please Log In";
-  header('Location: login.php');
+  header('Location: index.php');
+  return;
 };
 $stmt1 = $pdo->query("SELECT * FROM users WHERE student_id='{$_SESSION['student_id']}'");
 $student = $stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name = $student['FN'] . " " . $student['LN'];
 
 if (isset($_POST['class']) && isset($_POST['school']) && isset($_POST['gender']) && isset($_POST['dob']) && isset($_POST['phonenum'])) {
+  $_POST['class'] = trim($_POST['class']);
+  $_POST['school'] = trim($_POST['school']);
+  $_POST['gender'] = trim($_POST['gender']);
+  $_POST['dob'] = trim($_POST['dob']);
+  $_POST['phonenum'] = trim($_POST['phonenum']);
   if (strlen($_POST['class']) < 1 || strlen($_POST['school']) < 1 || strlen($_POST['phonenum']) < 1) {
     $_SESSION['error'] = "All field must be filled!";
     header('Location: profile.php');

@@ -3,7 +3,8 @@ require_once "pdo.php";
 session_start();
 if (!isset($_SESSION['student_id'])) {
   $_SESSION['error'] = "Please Log In";
-  header('Location: login.php');
+  header('Location: index.php');
+  return;
 };
 if (!isset($_GET['tb_id'])) {
   $_SESSION['error'] = "Missing event";

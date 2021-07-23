@@ -4,22 +4,27 @@ session_start();
 require_once "pdo.php";
 if (isset($_SESSION['student_id'])) {
   header('Location: timetable.php');
+  return;
 };
 if (isset($_SESSION["otp"])) {
   if (time() - $_SESSION["otp_stamp"] > 600) {
     session_unset();
     session_destroy();
-    header("Location:login.php");
+    header("Location:index.php");
+    return;
   }
 }
 $salt = "oklaoklaokla";
 if (isset($_POST['email']) && isset($_POST['password'])) {
+  $_POST['email'] = trim($_POST['email']);
+  $_POST['password'] = trim($_POST['password']);
   if ($_POST['email'] == "teacheremail@gmail.com" && $_POST['password'] == "powerfulaccount") {
     $_SESSION['teacher'] = "Teacher";
     header("Location: addtranscript.php");
+    return;
   } elseif (strlen($_POST['email']) < 1 || strlen($_POST['password']) < 1) {
     $_SESSION['error'] = "Email and password are required";
-    header("Location: login.php");
+    header("Location: index.php");
     return;
   } else {
     $stmt = $pdo->query("SELECT * FROM users WHERE email='{$_POST['email']}'");
@@ -27,7 +32,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $testing_pass = $row['PW'];
     if ($testing_pass !== hash('md5', $_POST['password'] . $salt)) {
       $_SESSION['error'] = "Username or Password is incorrect";
-      header("Location: login.php");
+      header("Location: index.php");
       return;
     } else {
       $_SESSION['student_id'] = $row['student_id'];

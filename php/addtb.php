@@ -4,11 +4,14 @@ require_once "pdo.php";
 if (!isset($_SESSION['student_id'])) {
   $_SESSION['error'] = "Please Log In";
   header('Location: index.php');
+  return;
 };
 $stmt1 = $pdo->query("SELECT * FROM users WHERE student_id='{$_SESSION['student_id']}'");
 $student = $stmt1->fetch(PDO::FETCH_ASSOC);
 $student_name = $student['FN'] . " " . $student['LN'];
 if (isset($_POST['event']) && isset($_POST['startdate']) && isset($_POST['enddate']) && isset($_POST['notes'])) {
+  $_POST['event'] = trim($_POST['event']);
+  $_POST['notes'] = trim($_POST['notes']);
   if (strlen($_POST['event']) < 1) {
     $_SESSION['error'] = "Event is required";
     header('Location: addtb.php');

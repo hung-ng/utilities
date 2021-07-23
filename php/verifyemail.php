@@ -4,15 +4,18 @@ session_start();
 require_once "pdo.php";
 if (isset($_SESSION['student_id'])) {
     header('Location: timetable.php');
+    return;
 };
 if (isset($_SESSION["otp"])) {
     if (time() - $_SESSION["otp_stamp"] > 600) {
         session_unset();
         session_destroy();
-        header("Location:login.php");
+        header("Location:index.php");
+        return;
     }
 } else {
-    header("Location: login.php");
+    header("Location: index.php");
+    return;
 }
 if (isset($_POST['otp'])) {
     if ($_POST['otp'] == $_SESSION['otp']) {
@@ -27,11 +30,12 @@ if (isset($_POST['otp'])) {
         );
         session_unset();
         $_SESSION['success'] = "Your password has been hashed";
-        header("Location: login.php");
+        header("Location: index.php");
         return;
     } else {
         $_SESSION['error'] = "Wrong OTP";
         header("Location: verifyemail.php");
+        return;
     }
 }
 ?>

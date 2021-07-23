@@ -22,15 +22,22 @@ session_start();
 require_once "pdo.php";
 if (isset($_SESSION['student_id'])) {
     header('Location: timetable.php');
+    return;
 };
 if (isset($_SESSION["otp"])) {
     if (time() - $_SESSION["otp_stamp"] > 600) {
         session_unset();
         session_destroy();
-        header("Location:login.php");
+        header("Location:index.php");
+        return;
     }
 }
 if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirmPassword']) && isset($_POST['firstName']) && isset($_POST['lastName'])) {
+    $_POST['email'] = trim($_POST['email']);
+    $_POST['password'] = trim($_POST['password']);
+    $_POST['confirmPassword'] = trim($_POST['confirmPassword']);
+    $_POST['firstName'] = trim($_POST['firstName']);
+    $_POST['lastName'] = trim($_POST['lastName']);
     $stmt = $pdo->query("SELECT PW FROM users WHERE email='{$_POST['email']}'");
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $testing_pass = $row['PW'];
@@ -40,6 +47,10 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm
         return;
     } else if (strpos($_POST['email'], '@') == false) {
         $_SESSION['error'] = "Email must have an at-sign (@)";
+        header("Location: register.php");
+        return;
+    } else if (strlen($_POST['password'])<8) {
+        $_SESSION['error'] = "Passwords must have at least 8 characters";
         header("Location: register.php");
         return;
     } else if ($_POST['password'] !== $_POST['confirmPassword']) {
@@ -66,8 +77,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm
         //Set this to true if SMTP host requires authentication to send email
         $mail->SMTPAuth = true;
         //Provide username and password     
-        $mail->Username = "****************";
-        $mail->Password = "****************";
+        $mail->Username = "**************";
+        $mail->Password = "**************";
         //If SMTP requires TLS encryption then set it
         $mail->SMTPSecure = "tls";
         //Set TCP port to connect to
@@ -136,7 +147,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm
                     <input type="password" name="confirmPassword" placeholder="Confirm your password">
                 </div>
                 <div class="form-action">
-                    <span>Already have an account? <a href="login.php" class="none">Login</a></span>
+                    <span>Already have an account? <a href="index.php" class="none">Login</a></span>
                 </div>
                 <button class="btn" type="submit">
                     Register

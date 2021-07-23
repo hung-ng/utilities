@@ -3,7 +3,8 @@ session_start();
 require_once "pdo.php";
 if (!isset($_SESSION['student_id'])) {
   $_SESSION['error'] = "Please Log In";
-  header('Location: login.php');
+  header('Location: index.php');
+  return;
 };
 $stmt1 = $pdo->query("SELECT * FROM users WHERE student_id='{$_SESSION['student_id']}'");
 $student = $stmt1->fetch(PDO::FETCH_ASSOC);

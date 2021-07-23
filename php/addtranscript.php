@@ -3,7 +3,8 @@ session_start();
 require_once "pdo.php";
 if (!isset($_SESSION['teacher'])) {
   $_SESSION['error'] = "Please Log In";
-  header('Location: login.php');
+  header('Location: index.php');
+  return;
 };
 if (isset($_POST['std_id']) && isset($_POST['science_score']) && isset($_POST['math_score']) && isset($_POST['lit_score'])) {
   if (strlen($_POST['std_id']) < 1) {
