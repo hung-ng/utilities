@@ -11,6 +11,10 @@ if (isset($_POST['std_id']) && isset($_POST['science_score']) && isset($_POST['m
     $_SESSION['error'] = "Student ID is required";
     header('Location: addtranscript.php');
     return;
+  } elseif ($_POST['science_score'] == "" || $_POST['math_score'] == "" || $_POST['lit_score'] == "") {
+    $_SESSION['error'] = "All fields must be filled";
+    header('Location: addtranscript.php');
+    return;
   } else {
     $stmt = $pdo->query("SELECT * FROM users WHERE student_id='{$_POST['std_id']}'");
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
