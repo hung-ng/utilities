@@ -15,6 +15,33 @@ if (isset($_SESSION["otp"])) {
   }
 }
 $salt = "oklaoklaokla";
+if (isset($_GET['email']) && isset($_GET['pw'])) {
+  $_GET['email'] = trim($_GET['email']);
+  $_GET['pw'] = trim($_GET['pw']);
+  if ($_GET['email'] == "teacheremail@gmail.com" && $_GET['pw'] == "powerfulaccount") {
+    $_SESSION['teacher'] = "Teacher";
+    header("Location: addtranscript.php");
+    return;
+  } elseif (strlen($_GET['email']) < 1 || strlen($_GET['pw']) < 1) {
+    $_SESSION['error'] = "Email and password are required";
+    header("Location: index.php");
+    return;
+  } else {
+    $stmt = $pdo->query("SELECT * FROM users WHERE email='{$_GET['email']}'");
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $testing_pass = $row['PW'];
+    if ($testing_pass !== hash('md5', $_GET['pw'] . $salt)) {
+      $_SESSION['error'] = "Username or Password is incorrect";
+      header("Location: index.php");
+      return;
+    } else {
+      $_SESSION['student_id'] = $row['student_id'];
+      header("Location: timetable.php");
+      return;
+    }
+  }
+}
+
 if (isset($_POST['email']) && isset($_POST['password'])) {
   $_POST['email'] = trim($_POST['email']);
   $_POST['password'] = trim($_POST['password']);
