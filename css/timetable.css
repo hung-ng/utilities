@@ -1,19 +1,21 @@
-table, th, td{
+table,
+th,
+td {
   border: 1px solid black;
   text-align: center;
 }
-table{
+table {
   width: 75%;
   border-collapse: collapse;
   margin: 0px auto;
 }
-th{
+th {
   color: white;
   background-color: gray;
   width: 20%;
   height: 80px;
 }
-td{
+td {
   color: black;
   background-color: white;
   width: 20%;
@@ -23,13 +25,13 @@ td{
   height: 30px;
   width: 300px;
 }
-label{
+label {
   height: 30px;
 }
-#timetable{
+#timetable {
   margin: 30px;
 }
-#adddiv{
+#adddiv {
   display: flex;
   justify-content: flex-end;
   padding: 0px 100px;

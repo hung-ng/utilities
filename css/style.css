@@ -1,49 +1,49 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-.input-wrapper input{
-    outline: none;
-    border: 1px solid #dbdbdb;
-    padding: 10px 15px;
-    border-radius: 5px;
-    width: 100%
+.input-wrapper input {
+  outline: none;
+  border: 1px solid #dbdbdb;
+  padding: 10px 15px;
+  border-radius: 5px;
+  width: 100%;
 }
 
-.input-wrapper{
-    margin-bottom: 10px;
+.input-wrapper {
+  margin-bottom: 10px;
 }
 
-.btn{
-    cursor: pointer;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: #4a90e6;
-    outline: none;
-    border-radius: 5px;
+.btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  color: #ffffff;
+  background-color: #4a90e6;
+  outline: none;
+  border-radius: 5px;
 }
 
-.error{
-    text-align: center;
+.error {
+  text-align: center;
 }
 
-.form-action span{
-    font-size: 25px;
+.form-action span {
+  font-size: 25px;
 }
-.none{
-    text-decoration: none;
-    color: inherit;
+.none {
+  text-decoration: none;
+  color: inherit;
 }
-.navbar{
+.navbar {
   display: flex;
   flex-direction: column;
   width: 20%;
   height: 100vh;
 }
-.navbox1{
-  font-family:  Arial, Helvetica, sans-serif;
+.navbox1 {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   width: 100%;
   cursor: pointer;
@@ -52,14 +52,13 @@
   background-color: #dfdfe2;
   color: #0a0a23;
   height: 14vh;
-  line-height: 14vh
-
+  line-height: 14vh;
 }
-.navbox1:hover{
+.navbox1:hover {
   background-color: #0a0a23;
   color: #dfdfe2;
 }
-.navbox2{
+.navbox2 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   width: 100%;
@@ -67,16 +66,15 @@
   text-align: center;
   padding: auto 0px;
   background-color: #0a0a23;
-  color:  #dfdfe2;
+  color: #dfdfe2;
   height: 14vh;
-  line-height: 14vh
-
+  line-height: 14vh;
 }
-.navbox2:hover{
-  background-color:  #dfdfe2;
+.navbox2:hover {
+  background-color: #dfdfe2;
   color: #0a0a23;
 }
-.brandname{
+.brandname {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   width: 100%;
@@ -86,26 +84,26 @@
   line-height: 10vh;
   margin-top: 30px;
 }
-.screencomponent{
+.screencomponent {
   display: flex;
   flex-direction: row;
 }
-.menu{
+.menu {
   display: flex;
   flex-direction: column;
   margin: 10px 0px 0px 0px;
   height: 70vh;
   justify-content: space-around;
 }
-.main{
+.main {
   width: 80%;
   padding: 30px;
 }
-.article{
+.article {
   font-size: 50px;
   text-align: center;
 }
-.fixed{
+.fixed {
   position: fixed;
   left: 0;
   width: 20%;

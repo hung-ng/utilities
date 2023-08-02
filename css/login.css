@@ -1,24 +1,23 @@
-.login-container{
-    height: 100vh;
-    background-image: url(../img/learning-tool.png);
-    background-size: cover;
-    display: flex;
-    justify-content: flex-end;
+.login-container {
+  height: 100vh;
+  background-image: url(../img/learning-tool.png);
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
 }
-.login-container .aside-right{
-    height: 100vh;
-    background-color: #ffffff;
-    width: 30%;
+.login-container .aside-right {
+  height: 100vh;
+  background-color: #ffffff;
+  width: 30%;
 }
 .login-container .aside-right .header h3 {
-    font-size: 40px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #615f5f;
-    text-align: center;
-    margin-top: 50px;
+  font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #615f5f;
+  text-align: center;
+  margin-top: 50px;
 }
 
-
-#login-form{
-    padding: 20px;
+#login-form {
+  padding: 20px;
 }

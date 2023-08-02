@@ -1,9 +1,9 @@
-.profile-content{
-  display:flex;
+.profile-content {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.profile-body{
+.profile-body {
   margin: 30px 100px;
   font-size: 30px;
 }
